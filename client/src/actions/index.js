@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+// types
+export const FETCHING_START = 'FETCHING_START';
+export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
+export const FETCHING_FAILURE = 'FETCHING_FAILURE';
+export const ADD_SMURF = 'ADD_SMURF';
+
 //Task List:
-//1. Add fetch smurfs action: 
+//1. Add fetch smurfs action:
 //              - fetch and return initial list of smurfs
 //              - dispatch actions that indicate if we are waiting for a server response
 //              - dispatch an error text action if an error is returned from the server
