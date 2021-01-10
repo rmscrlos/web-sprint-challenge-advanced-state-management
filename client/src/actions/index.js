@@ -5,6 +5,33 @@ export const FETCHING_START = 'FETCHING_START';
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
 export const FETCHING_FAILURE = 'FETCHING_FAILURE';
 export const ADD_SMURF = 'ADD_SMURF';
+export const ERROR = 'ERROR';
+
+const headers = {
+	Accept: 'Application/json'
+};
+
+const fetchSmurfs = () => dispatch => {
+	dispatch({ type: FETCHING_START });
+	axios
+		.get('http://localhost:3333/smurfs', { headers: headers })
+		.then(res => {
+			dispatch({ type: FETCHING_SUCCESS, payload: res.data });
+		})
+		.catch(err => {
+			dispatch({ type: FETCHING_FAILURE, payload: err });
+		});
+};
+
+export const addSmurf = newSmurf => dispatch => {
+	dispatch({ type: ADD_SMURF, payload: newSmurf });
+};
+
+export const showError = error => dispatch => {
+	dispatch({ type: ERROR, payload: error });
+};
+
+export default fetchSmurfs;
 
 //Task List:
 //1. Add fetch smurfs action:
